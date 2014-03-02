@@ -6,19 +6,19 @@
 // the scala.swing library is a wrapper around Java's Swing library. The
 // ideas are similar, but the way in which you interact with them has been
 // changed to match the Scala style.
+// 
+// This shows how to do field validation using Scala's options. 
 
-// begin-SimpleGUI
+// begin-SimpleGUI2
 import swing._
+import scala.util.control.Exception._
 
 val frame = new MainFrame
 val field = new TextField("0")
+
 val button = Button("Increment") {
-    try {
-        field.text = (field.text.toInt+1).toString
-    } catch {
-    case ex:
-        NumberFormatException => field.text = "0"
-    }
+  val option = catching(classOf[NumberFormatException]) opt field.text.toInt 
+  field.text = (option.getOrElse(-1)+1).toString
 }
 
 val bp = new BorderPanel
@@ -29,4 +29,4 @@ frame.contents = bp
 frame.centerOnScreen
 frame.open
 
-// end-SimpleGUI
+// end-SimpleGUI2
