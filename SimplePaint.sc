@@ -1,6 +1,7 @@
 // This example shows how you can override the paint method to make a
 // custom drawing. It also shows interactions with the mouse.
 
+// begin-SimplePaint
 import swing._
 import event._
 import java.awt. {Color,Shape}
@@ -35,3 +36,4 @@ val frame = new MainFrame {
 }
 
 frame.open
+// end-SimplePaint
