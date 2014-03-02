@@ -6,6 +6,7 @@
 // elements and react to them. The behavior of the lists shows how collection
 // methods can play a role in GUIs.
 
+// begin-BiggerGUI
 import swing._
 import event._
 
@@ -48,3 +49,4 @@ val frame = new MainFrame {
 }
 
 frame.open
+// end-BiggerGUI

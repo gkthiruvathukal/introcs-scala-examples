@@ -7,6 +7,7 @@
 // ideas are similar, but the way in which you interact with them has been
 // changed to match the Scala style.
 
+// begin-SimpleGUI
 import swing._
 
 val frame = new MainFrame
@@ -26,3 +27,5 @@ bp.layout += field -> North
                           frame.contents = bp
                                   frame.centerOnScreen
                                   frame.open
+
+// end-SimpleGUI
