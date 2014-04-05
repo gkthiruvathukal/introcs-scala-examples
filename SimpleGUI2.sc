@@ -10,7 +10,7 @@
 // This shows how to do field validation using Scala's options. 
 
 // begin-SimpleGUI2
-import scala.swing._
+import swing._
 import scala.util.Try
 
 val frame = new MainFrame
