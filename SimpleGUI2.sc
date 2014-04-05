@@ -10,15 +10,15 @@
 // This shows how to do field validation using Scala's options. 
 
 // begin-SimpleGUI2
-import swing._
-import scala.util.control.Exception._
+import scala.swing._
+import scala.util.Try
 
 val frame = new MainFrame
 val field = new TextField("0")
 
 val button = Button("Increment") {
-  val option = catching(classOf[NumberFormatException]) opt field.text.toInt 
-  field.text = (option.getOrElse(-1)+1).toString
+  val attempt = Try(field.text.toInt) 
+  field.text = (attempt.getOrElse(-1)+1).toString
 }
 
 val bp = new BorderPanel
