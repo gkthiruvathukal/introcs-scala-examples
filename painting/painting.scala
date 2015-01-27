@@ -1,7 +1,7 @@
 // This version is one where every Scala variable (val) 
 // is declared with an explicit data type.
 
-object Hello {
+object Painting {
   def main(args: Array[String]) {
     println("Hello, world!")
     val HEIGHT : Double = 8.0
