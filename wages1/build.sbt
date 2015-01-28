@@ -1,4 +1,4 @@
-name := "try_ui"
+name := "wages1"
 
 scalaVersion := "2.11.5"
 
