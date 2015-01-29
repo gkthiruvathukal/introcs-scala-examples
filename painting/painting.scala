@@ -7,10 +7,10 @@ object Painting {
     val HEIGHT : Double = 8.0
 
     println("Calculation of Room Paint Requirements")
-    println("Enter room length: ")
+    print("Enter room length: ")
     val lengthString : String = readLine()
     val length : Double = lengthString.toDouble
-    println("Enter room width: ")
+    print("Enter room width: ")
     val widthString : String = readLine()
     val width : Double = widthString.toDouble
 
