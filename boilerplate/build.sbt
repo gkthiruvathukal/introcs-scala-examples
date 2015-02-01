@@ -1,3 +1,3 @@
-name := "sample"
+name := "NAME"
 
 scalaVersion := "2.11.+"
