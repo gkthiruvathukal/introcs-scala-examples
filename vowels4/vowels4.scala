@@ -10,7 +10,6 @@ object Vowels4 {
       val s = promptLine("Enter a line: ")
       printVowels(s)
       printUniqueVowels(s)
-
    }
    
    def generateVowels(s : String) : Array[Char] = {
