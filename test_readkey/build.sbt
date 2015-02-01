@@ -1,3 +1,3 @@
-name := "NAME"
+name := "test_readkey"
 
 scalaVersion := "2.11.+"

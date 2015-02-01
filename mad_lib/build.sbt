@@ -1,3 +1,3 @@
-name := "NAME"
+name := "mad_lib"
 
 scalaVersion := "2.11.+"

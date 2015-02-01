@@ -1,3 +1,3 @@
-name := "NAME"
+name := "sum_file"
 
 scalaVersion := "2.11.+"
