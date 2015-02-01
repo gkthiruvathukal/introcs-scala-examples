@@ -1,4 +1,4 @@
-object ChangeThisName {
+object Addition1 {
 
    def sumProblemString(x : Int, y : Int) : String = {
       val sum = x + y
