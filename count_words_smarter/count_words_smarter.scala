@@ -1,9 +1,9 @@
 import scala.collection.mutable.HashMap
 
-object CountWords {
+object CountWordsSmarter {
   def main(args: Array[String]) {
      val ignoreAll = "a an and the".split(" ")
-     var ignore = ignoreAll.toSet
+     val ignore = ignoreAll.toSet
      val gettysburg = """
          |Four score and seven years ago our 
          |fathers brought forth on this continent 
@@ -52,35 +52,35 @@ object CountWords {
      val wc = getCounts(gettysburg, ignore)
      printCounts(wc, 3);
   }
-      /// Return a Dictionary of word:count pairs from parsing s,
-      ///  excluding all strings in ignore. 
-  def getCounts(s : String, ignore : Set[String]) = {
-     //val sep = "\n\t !@#$%^&*()_+{}|[]\\:\";<>?,./".toCharArray;
-     val words = s.toLowerCase.split("\\s+")      
-     var wc = new HashMap[String, Int]
-     
-     for (w <- words) {
-        if (!ignore.contains(w)) {         
-           if (wc.contains(w)) { //increase count of word already seen
-              wc(w) += 1
-           }
-           else {                   // make a first entry
-              wc(w) = 1;
-           }
-        }
-     }
-     wc
-   }
 
+  // Return a Dictionary of word:count pairs from parsing s,
+  //  excluding all strings in ignore. 
+
+  def getCounts(s : String, ignore : Set[String]) : Map[String, Int] = {
+     //val sep = "\n\t !@#$%^&*()_+{}|[]\\:\";<>?,./".toCharArray;
+     val words = s.toLowerCase.split("\\s+")
+     
+     // This maps words to word -> List(n * word)
+     val wordsMap = words.groupBy(w => w)
+
+     // exclude keys that are noise words
+     val filteredKeys = wordsMap.keys.filter( n => !ignore.contains(n))
+
+     // generate pairs (word, occurrences of word)
+     val wordCountPairs = filteredKeys.map { a => (a, wordsMap(a).length ) }
+
+     // turn this into a proper map, mainly for final printing
+     wordCountPairs.toMap
+  }
      /// Print each word and its count, if the count is at least minCount. 
-   def printCounts(wc : HashMap[String, Int], minCount : Int)
-   {
-        val words = wc.keys.toList.sorted
-        for (w <- words) {
-           if (wc(w) >= minCount) {
-              val count = wc(w)
-              println(s"$w: $count")
-           }
-        }
-   }                                     // end chunk
+  def printCounts(wc : Map[String, Int], minCount : Int)
+  { 
+      val words = wc.keys.toList.sorted
+      for (w <- words) {
+          if (wc(w) >= minCount) {
+             val count = wc(w)
+             println(s"$w: $count")
+          }
+       }
+  }
 }
