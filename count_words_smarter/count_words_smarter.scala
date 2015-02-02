@@ -3,7 +3,7 @@ import scala.collection.mutable.HashMap
 object CountWordsSmarter {
   def main(args: Array[String]) {
      val ignoreAll = "a an and the".split(" ")
-     var ignore = ignoreAll.toSet
+     val ignore = ignoreAll.toSet
      val gettysburg = """
          |Four score and seven years ago our 
          |fathers brought forth on this continent 
@@ -70,7 +70,7 @@ object CountWordsSmarter {
      val wordCountPairs = filteredKeys.map { a => (a, wordsMap(a).length ) }
 
      // turn this into a proper map, mainly for final printing
-     wordCountSet.toMap
+     wordCountPairs.toMap
   }
      /// Print each word and its count, if the count is at least minCount. 
   def printCounts(wc : Map[String, Int], minCount : Int)
