@@ -1,5 +1,12 @@
-object return1 {
+object Return1 {
   def main(args: Array[String]) {
-     // Put code here
+    println( square(3) )
+    println(square(3))
+    println(square(3) + square(4))
+  }
+
+  def square(x : Int) : Int = {
+     x * x
   }
 }
+
