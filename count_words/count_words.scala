@@ -1,6 +1,6 @@
 import scala.collection.mutable.HashMap
 
-object count_words {
+object CountWords {
   def main(args: Array[String]) {
      val ignoreAll = "a an and the".split(" ")
      var ignore = ignoreAll.toSet
@@ -56,7 +56,7 @@ object count_words {
       ///  excluding all strings in ignore. 
   def getCounts(s : String, ignore : Set[String]) = {
      //val sep = "\n\t !@#$%^&*()_+{}|[]\\:\";<>?,./".toCharArray;
-     val words = s.toLowerCase.split("\\s+");
+     val words = s.toLowerCase.split("\\s+")      
      var wc = new HashMap[String, Int]
      
      for (w <- words) {
