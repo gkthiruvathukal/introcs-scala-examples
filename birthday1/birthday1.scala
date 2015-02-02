@@ -1,5 +1,8 @@
-object birthday1 {
+object Birthday1 {
   def main(args: Array[String]) {
-     // Put code here
+      println ("Happy Birthday to you!")
+      println ("Happy Birthday to you!")
+      println ("Happy Birthday, dear Emily.")
+      println ("Happy Birthday to you!")
   }
 }
