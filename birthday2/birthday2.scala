@@ -1,5 +1,15 @@
-object birthday2 {
+object Birthday2 {
+
   def main(args: Array[String]) {
-     // Put code here
+     happyBirthdayEmily()
+     println ("Hip hip hooray!")
+     happyBirthdayEmily()
+  }
+
+  def happyBirthdayEmily() {
+     println ("Happy Birthday to you!")
+     println ("Happy Birthday to you!")
+     println ("Happy Birthday, dear Emily.")
+     println ("Happy Birthday to you!")
   }
 }
