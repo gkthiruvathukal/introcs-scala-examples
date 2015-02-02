@@ -1,6 +1,6 @@
-object GoodScope {
+object GoodScope2 {
   def main(args: Array[String]) {
-     val x = 3
+     val z = 3
      F(x)
      // Put code here
   }
