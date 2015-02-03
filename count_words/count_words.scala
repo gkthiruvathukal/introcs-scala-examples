@@ -55,8 +55,8 @@ object CountWords {
       /// Return a Dictionary of word:count pairs from parsing s,
       ///  excluding all strings in ignore. 
   def getCounts(s : String, ignore : Set[String]) = {
-     //val sep = "\n\t !@#$%^&*()_+{}|[]\\:\";<>?,./".toCharArray;
-     val words = s.toLowerCase.split("\\s+")      
+     val wordPattern = """(\w+)""".r
+     val words = wordPattern.findAllIn(s.toLowerCase)
      var wc = new HashMap[String, Int]
      
      for (w <- words) {
