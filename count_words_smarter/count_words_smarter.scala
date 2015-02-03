@@ -58,7 +58,8 @@ object CountWordsSmarter {
 
   def getCounts(s : String, ignore : Set[String]) : Map[String, Int] = {
      //val sep = "\n\t !@#$%^&*()_+{}|[]\\:\";<>?,./".toCharArray;
-     val words = s.toLowerCase.split("\\s+")
+     val wordPattern = """(\w+)""".r
+     val words = wordPattern.findAllIn(s.toLowerCase).toList
      
      // This maps words to word -> List(n * word)
      val wordsMap = words.groupBy(w => w)
