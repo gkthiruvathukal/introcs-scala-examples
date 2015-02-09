@@ -55,7 +55,6 @@ object CountWordsSmarter {
   //  excluding all strings in ignore. 
 
   def getCounts(s: String, ignore: Set[String]): Map[String, Int] = {
-    //val sep = "\n\t !@#$%^&*()_+{}|[]\\:\";<>?,./".toCharArray;
     val wordPattern = """(\w+)""".r
     val words = wordPattern.findAllIn(s.toLowerCase).toList
 
