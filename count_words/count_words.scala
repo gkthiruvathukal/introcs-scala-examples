@@ -68,7 +68,7 @@ object CountWords {
         }
         else {
           // make a first entry
-          wc(w) = 1;
+          wc(w) = 1
         }
       }
     }
