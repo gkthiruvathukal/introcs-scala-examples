@@ -9,7 +9,7 @@ object birthday4 {
   def happyBirthday(person : String, years : Int) {
      println ("Happy Birthday to you!")
      println ("Happy Birthday to you!")
-     println ("Happy Birthday, dear $person.")
+     println (s"Happy Birthday, dear $person.")
      println ("Happy Birthday to you!")
 
      println (s"$person is $years years old today.")
