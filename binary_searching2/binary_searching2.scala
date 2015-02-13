@@ -2,7 +2,7 @@ import scala.util.Random.nextInt
 
 case class SearchOutcome(status : Boolean, foundAt : Int)
 
-object BinarySearching {
+object BinarySearching2 {
 
   def main(args: Array[String]) {
     val n = 10
@@ -16,7 +16,7 @@ object BinarySearching {
 
     // now generate some values that shouldn't be found in the original sortedArray (of randInts)
     val randInts2 = Array.fill(n)(nextInt(MaxValue) + MaxValue)
-    val outcomes2 = randInts2 map { item => intArrayBinarySearch(sortedInts, item) }
+    val outcomes2 = randInts2  map { item => intArrayBinarySearch(sortedInts, item) }
     val numberTrue2 = outcomes2 count { n => n.status == true }
     if (numberTrue2 == 0)
       println("All random integers (2nd set) were not found successfully")
@@ -25,21 +25,21 @@ object BinarySearching {
   }
 
   
+  // The recursive version. We break this up into two cases so users don't need to think about
+  // min, max, and mid to use this function!
 
-  def intArrayBinarySearch(data : Array[Int], item : Int) : SearchOutcome = {
-    var min = 0
-    var max = data.length-1
-    var mid = -1
-    var found = false
-    while (min <= max && !found) {
-      mid = (min + max) / 2;
-      if (data(mid) == item)
-        found = true
-      if (item > data(mid))
-        min = mid+1
-      else
-        max = mid-1
-    }
-    SearchOutcome(found, mid)
+  def intArrayBinarySearch(data : Array[Int], item : Int) =
+    intArrayBinarySearchRange(data, 0, data.length-1, item)
+
+  def intArrayBinarySearchRange(data : Array[Int], min : Int, max : Int, item : Int) : SearchOutcome = {
+    val mid = (min + max) / 2
+    if (min > max) 
+       SearchOutcome(false, -1)
+    else if (item == data(mid))
+       SearchOutcome(true, mid)
+    else if (item > data(mid))
+       intArrayBinarySearchRange(data, mid+1, max, item)
+    else 
+       intArrayBinarySearchRange(data, min, mid-1, item)
   }
 }
