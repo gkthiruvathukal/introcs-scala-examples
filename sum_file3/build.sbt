@@ -1,4 +1,4 @@
-name := "sum_file"
+name := "sum_file3"
 
 scalaVersion := "2.11.5"
 
