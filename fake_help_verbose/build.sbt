@@ -8,6 +8,10 @@
 
 name := "fake_help_verbose"
 
+scalaSource in Compile := baseDirectory.value
+
+// scalaSource in Test := baseDirectory.value
+
 scalaVersion := "2.11.5"
 
 resolvers += "loyolachicagocode@bintray" at "http://dl.bintray.com/loyolachicagocode/maven"
