@@ -1,6 +1,6 @@
 import scala.util.Random.nextInt
 
-case class SearchOutcome(status : Boolean, foundAt : Int)
+case class SearchOutcome(status: Boolean, foundAt: Int)
 
 object BinarySearching {
 
@@ -24,11 +24,9 @@ object BinarySearching {
     println("If you see 3 lines of output, this program works. We will use unit tests next time.")
   }
 
-  
-
-  def intArrayBinarySearch(data : Array[Int], item : Int) : SearchOutcome = {
+  def intArrayBinarySearch(data: Array[Int], item: Int): SearchOutcome = {
     var min = 0
-    var max = data.length-1
+    var max = data.length - 1
     var mid = -1
     var found = false
     while (min <= max && !found) {
@@ -36,9 +34,9 @@ object BinarySearching {
       if (data(mid) == item)
         found = true
       if (item > data(mid))
-        min = mid+1
+        min = mid + 1
       else
-        max = mid-1
+        max = mid - 1
     }
     SearchOutcome(found, mid)
   }
