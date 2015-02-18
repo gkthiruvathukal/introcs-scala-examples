@@ -8,6 +8,10 @@ TEMPLATE="""// build.sbt for example '%(name)s'
 
 name := "%(name)s"
 
+scalaSource in Compile := baseDirectory.value
+
+// scalaSource in Test := baseDirectory.value
+
 scalaVersion := "%(scala)s"
 
 resolvers += "loyolachicagocode@bintray" at "http://dl.bintray.com/loyolachicagocode/maven"
