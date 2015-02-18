@@ -3,7 +3,7 @@
  */
 object TryUI {
 
-  def main(args : Array[String]): Unit = {
+  def main(args: Array[String]): Unit = {
     import edu.luc.cs.ui._
 
     val n = promptInt("What is your favorite number? ", -1)

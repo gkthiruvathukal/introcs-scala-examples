@@ -4,7 +4,7 @@ object WriteTest {
     print(s)
     print("there")
     println(s)
-    println( "Another line")
+    println("Another line")
     print("Starting ")
     println("yet another line")
   }
