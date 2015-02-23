@@ -8,13 +8,25 @@ TEMPLATE="""// build.sbt for example '%(name)s'
 
 name := "%(name)s"
 
-scalaSource in Compile := baseDirectory.value
+// This allows us to keep the source code and tests in the base directory instead
+// of the usual src/{main,test}/scala folder structure. Makes it easier for CS1
+// students!
 
-// scalaSource in Test := baseDirectory.value
+scalaSource in Compile := baseDirectory.value
+scalaSource in Test := baseDirectory.value
 
 scalaVersion := "%(scala)s"
 
-resolvers += "loyolachicagocode@bintray" at "http://dl.bintray.com/loyolachicagocode/maven"
+// UI library provided by George K. Thiruvathukal and Andy Harrington (based on C# book)
+// Thanks to Konstantin for the Bintray integration!
 
+resolvers += "loyolachicagocode@bintray" at "http://dl.bintray.com/loyolachicagocode/maven"
 libraryDependencies += "edu.luc.cs" %(pct)s%(pct)s "introcs-scala-ui" %(pct)s "0.1.11"
+
+// JUnit Support
+libraryDependencies += "com.novocode" %(pct)s "junit-interface" %(pct)s "0.11"
+
+// ScalaTest Support
+libraryDependencies += "org.scalatest" %(pct)s%(pct)s "scalatest" %(pct)s "2.2.1"
+
 """
