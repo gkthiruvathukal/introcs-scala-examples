@@ -12,13 +12,13 @@ def main():
    existing_examples = os.listdir('.')
    if not new_example in existing_examples:
       reldir = os.path.join('.',new_example)
-      os.mkdir(reldir)
       buildsbt = os.path.join(reldir,'build.sbt')
+      os.mkdir(reldir)
       with open(buildsbt,"w") as f:
          f.write(build.TEMPLATE % { 'name' : new_example, 'scala' : '2.11.5', 'pct' : '%' })
       print("Wrote " + buildsbt)
    else:
-      print("Did not write" + buildsbt)
+      print("Did not write" + new_example)
 
 if __name__ == '__main__':
    main()       
