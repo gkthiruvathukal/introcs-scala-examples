@@ -11,7 +11,21 @@ object kmers {
    // Try running this program as follows:
    // usage: sbt "run-main kmers DNA-Sequence Length"
    // sbt "run-main kmers TATGGGGTGC 3"
-   
+
+   def prefix(s : String) : String = {
+      require (s.length > 0)
+      s.substring(0, s.length-1)
+   }   
+
+   def suffix(s : String) : String = {
+      require (s.length > 0)
+      s.substring(1)
+   }
+
+   def kmersWithPrefix( kmers : IndexedSeq[String], index : Int) = {
+      (0 until kmers.length) filter { i => i != index && suffix(kmers(i)) == prefix(kmers(i)) }
+   }
+
    def main(args : Array[String]) {
       val DNA = "TATGGGGTGC"
       val KMER_LENGTH = 3
