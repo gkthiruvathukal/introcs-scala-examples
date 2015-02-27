@@ -4,20 +4,20 @@
 object Painting {
   def main(args: Array[String]) {
     println("Hello, world!")
-    val HEIGHT : Double = 8.0
+    val HEIGHT: Double = 8.0
 
     println("Calculation of Room Paint Requirements")
     print("Enter room length: ")
-    val lengthString : String = readLine()
-    val length : Double = lengthString.toDouble
+    val lengthString: String = readLine()
+    val length: Double = lengthString.toDouble
     print("Enter room width: ")
-    val widthString : String = readLine()
-    val width : Double = widthString.toDouble
+    val widthString: String = readLine()
+    val width: Double = widthString.toDouble
 
     // ignore doors
-    val wallArea : Double = 2 * (length + width) * HEIGHT
+    val wallArea: Double = 2 * (length + width) * HEIGHT
 
-    val ceilingArea : Double = length * width
+    val ceilingArea: Double = length * width
 
     println(s"The wall area is $wallArea square feet.")
     println(s"The ceiling area is $ceilingArea square feet.")

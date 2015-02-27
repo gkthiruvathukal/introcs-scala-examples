@@ -1,7 +1,6 @@
 // This version of Painting is with inferred data types
 // (similar to C# var)
 
-
 object Painting2 {
   def main(args: Array[String]) {
     println("Hello, world!")

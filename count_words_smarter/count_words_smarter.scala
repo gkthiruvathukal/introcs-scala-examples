@@ -65,7 +65,7 @@ object CountWordsSmarter {
     val filteredKeys = wordsMap.keys.filter(n => !ignore.contains(n))
 
     // generate pairs (word, occurrences of word)
-    val wordCountPairs = filteredKeys.map { a => (a, wordsMap(a).length)}
+    val wordCountPairs = filteredKeys.map { a => (a, wordsMap(a).length) }
 
     // turn this into a proper map, mainly for final printing
     wordCountPairs.toMap

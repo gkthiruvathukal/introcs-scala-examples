@@ -65,8 +65,7 @@ object CountWords {
         if (wc.contains(w)) {
           //increase count of word already seen
           wc(w) += 1
-        }
-        else {
+        } else {
           // make a first entry
           wc(w) = 1
         }

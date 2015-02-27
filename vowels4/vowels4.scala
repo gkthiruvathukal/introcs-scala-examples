@@ -6,31 +6,31 @@ import edu.luc.cs.ui._
 // set (to idenitfy the unique vowels).
 
 object Vowels4 {
-   def main(args: Array[String]) {
-      val s = promptLine("Enter a line: ")
-      printVowels(s)
-      printUniqueVowels(s)
-   }
-   
-   def generateVowels(s : String) : Array[Char] = {
-      val vowels = "aeiouAEIOU"
-      for { 
-         c <- s.toCharArray
-         if (vowels contains c)
-      } yield {
-         c
-      }
-   }
+  def main(args: Array[String]) {
+    val s = promptLine("Enter a line: ")
+    printVowels(s)
+    printUniqueVowels(s)
+  }
 
-   def printVowels(s : String) {
-      println("Vowels found (includes duplicates)")
-      generateVowels(s) map println
-   }
+  def generateVowels(s: String): Array[Char] = {
+    val vowels = "aeiouAEIOU"
+    for {
+      c <- s.toCharArray
+      if (vowels contains c)
+    } yield {
+      c
+    }
+  }
 
-   def printUniqueVowels(s : String) {
-      println("Vowels found (unique)")
-      val vowelSet = generateVowels(s).toSet
-      vowelSet map println
-   }
+  def printVowels(s: String) {
+    println("Vowels found (includes duplicates)")
+    generateVowels(s) map println
+  }
+
+  def printUniqueVowels(s: String) {
+    println("Vowels found (unique)")
+    val vowelSet = generateVowels(s).toSet
+    vowelSet map println
+  }
 
 }
