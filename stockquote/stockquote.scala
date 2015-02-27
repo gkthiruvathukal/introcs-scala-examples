@@ -34,20 +34,18 @@ object StockQuote {
 
     val rows = rowIterator.toList
 
-    println("getSummary")
+    println("Raw Data: ")
     rows foreach println
-    println("getSummary done")
-
     // This is just an example of what is possible!
-    val closeList = rows map { m => Try(m("Close").toDouble).getOrElse(0.0) }
-    val highClose = closeList.max
-    val lowClose = closeList.min
-    println(s"high closing value $highClose; low closing value $lowClose")
-    //map { entry => entry.get("Close") }.min
-
-    //rintln("Mininum stock value = $minQuote")
+    for (fieldName <- List("Close", "High", "Low", "Open", "Adj Close")) {
+      val fieldValues = rows map { m => Try(m(fieldName).toDouble).getOrElse(0.0) }
+      val highValue = fieldValues.max
+      val lowValue = fieldValues.min
+      println(s"$fieldName: low=$lowValue, high=$highValue")
+    }
 
   }
+
 
   def main(args: Array[String]) {
     val SYMBOL = "GOOG"
@@ -58,7 +56,8 @@ object StockQuote {
     val starting = matchDateForYahoo(startDate, "a", "b", "c")
     val ending = matchDateForYahoo(endDate, "d", "e", "f")
     val url = s"http://real-chart.finance.yahoo.com/table.csv?s=${symbol}${starting}${ending}&g=d"
-    println(s"Getting $url")
+    println(s"Getting report for $symbol")
+    println(s"Yahoo! Finance URL:\n$url")
     val data = Source.fromURL(url)
     val inLines = data.getLines
     val header = inLines.next()
