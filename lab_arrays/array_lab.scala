@@ -1,129 +1,144 @@
 import scala.math.min
+import scala.io._
+import scala.util._
 
-object arraylab  {
+object arraylab {
 
-  /*
-     getIntsAsString
-   For example: If the Array contains 1, 2, 3, 4, 5
-     printInts("my array ", Array(1, 2, 3, 4, 5), " : ") gives
-     myarray 1:2:3:4:5
-  */ 
-
-  def arraySize(a : Array[Int]) : Int = {
+  def arraySize(a: Array[Int]): Int = {
+    /*
+     * Returns the length of the array.
+     *
+     * No need to change this method. It already does its job!
+     * The intention is to show one function that passes tests.
+     */
     a.length
   }
 
-  def getIntsAsString(label: String, delimiter : String, a: Array[Int]) : String = {
-    ""
+  def getIntsAsString(label: String, delimiter: String, a: Array[Int]): String = {
+    /*
+     * This function will convert the array (a) to a string representation. 
+     * By way of example:
+     *   getIntsAsString("My Array is: ",", ", Array(1, 3, 5)) gives
+     *     "My array is: 1,3,5"
+     *   getIntsAsString("My Array = ", ":", Array(2, 4, 6)) gives
+     *     "My Array = 2:4:6"
+     */
+
+
+    val aAsString = "" // your job: compute aAsString
+
+    // You need to delete the line below and replace with code to do what is being asked.
+    label + aAsString
   }
 
+  def readFileIntoArray(filename: String, a: Array[Int]) {
+    /*
+     * Open a file for input. Using a simple for loop, read the lines of the
+     * file into the array a. If a line does not contain a valid integer, use 0
+     * for that line. See the files ints.txt and input.txt. These files are
+     * read automatically when running the tests on your code.
+     */
 
-  // Read the contents of filename into a.
-  // You should only read as many lines as the array can hold (a.length)
-  // Each line should be converted to Int (if possible) or 0 otherwise.
-
-  def readFileIntoArray(filename: String, a : Array[Int]) {
-
+   for (file <- Try(Source.fromFile(filename)).toOption) {
+     // put your code in here to read lines into a
+   }
   }
 
-  //Minimum chunk
-  ///  Return the minimum value in a.
-  ///  Example: If a contains {5, 7, 4, 9}, return 4. 
-  ///  Assume a contains at least one value.
+  def minimum(a: Array[Int]): Int = {
+    /*
+     * This require() is needed for the test for 0 length to pass.
+     */
+    require(a.length > 0)
 
-  def minimum(a: Array[Int]) : Int = {
-    require(a.length > 0) // if you delete this, the tests will not pass!
-
-    return 0; // so stub compiles
-  }
-  //CountEven chunk
-  ///  Return the number of even values in a.
-  ///  Example: If a contains {-4, 7, 6, 12, 9}, return 3. 
-  def countEven(a: Array[Int]) : Int = {
-    return 0; // so stub compiles
+    // Your code here. Be sure to delete Int.MinValue.
+ 
+    Int.MinValue
   }
 
-  //CountEven chunk
-  ///  Return the number of even values in a.
-  ///  Example: If a contains {-4, 7, 6, 12, 9}, return 3. 
+  def countEven(a: Array[Int]): Int = {
+    /*
+     * Returns a count of the number of even integers in the array.
+     */
 
-  def countOdd(a: Array[Int]) : Int = {
-    return 0; // so stub compiles
+    // Your code here. Be sure to delete Int.MinValue.
+
+    Int.MinValue
   }
 
-  //PairwiseAdd chunk
-  ///  Add corresponding elements of a and b and place them in sum.
-  ///  Assume all arrays have the same Length.
-  ///  Example: If a contains {2, 4, 6} and b contains {7, -1, 8}
-  ///  then at the end sum should contain {9, 3, 14}. 
+  def countOdd(a: Array[Int]): Int = {
+    /*
+     * Returns a count of the number of even integers in the array.
+     */
 
-  def pairwiseAdd(a: Array[Int], b: Array[Int], c: Array[Int])  {
-
+    Int.MinValue
   }
-  //NewPairwiseAdd chunk
-  ///  Return a new array whose elements are the sums of the
-  ///  corresponding elements of a and b.
-  ///  Assume a and b have the same Length.
-  ///  Example: If a contains {2, 4, 6} and b contains {3, -1, 5}
-  ///  then return an array containing {5, 3, 11}. 
-  def newPairwiseAdd(a: Array[Int], b: Array[Int]) : Array[Int] = {
+
+  def pairwiseAdd(a: Array[Int], b: Array[Int], c: Array[Int]) : Unit = {
+    require(c.length >= min(a.length, b.length))
+    /*
+     * Modifies an incoming array c, where c(i) = a(i) + b(i).
+     * If a.length and b.length are not equal, find the smaller
+     * of the two, k=min(a.length, b.length) and sum up the 
+     * elements from 0 to k.
+     *
+     * Returns Unit, meaning that you don't have to explicitly return anything.
+     */
+
+ 
+  }
+  def newPairwiseAdd(a: Array[Int], b: Array[Int]): Array[Int] = {
     val addSize = min(a.length, b.length)
     val newArray = Array.fill(addSize)(0)
 
-    // your code here
+    /*
+     * Hint: You can probably get pairwiseAdd() to do the work of 
+     * this function!
+     */
 
+    // Your code here.
+
+    // You will want to return newArray here (leave as is).
     newArray
   }
-  //IsAscending chunk
-  ///  Return true if the numbers are sorted in increasing order,
-  ///  so that in each pair of consecutive entries,
-  ///  the second is always at least as large as the first.
-  ///  Return false otherwise.  Assume an array with fewer than
-  ///  two elements is ascending.
-  ///  Examples: If a contains {2, 5, 5, 8}, return true;
-  ///  if a contains {2, 5, 3, 8}, return false. 
-  def isAscending(a: Array[Int]) : Boolean = {
+  def isAscending(a: Array[Int]): Boolean = {
+
+    /*
+     * Returns true if each element of array a is the same or increasing
+     * in value.
+     */
+
+    // Delete this after putting your code above.
     false
   }
 
-  /*
-     getAscendingRun(a, position) returns the position where a 
-     run (of ascending values) ends. If a run ends at the end of
-     the array, the array's length is returned. This function is 
-     designed to be called over and over until there are no more 
-     runs.
-
-    example:
-
-    If you ahve an array of data:
-    val data = Array(2, 5, 8, 3, 9, 9, 8)
-
-    getAscendingRun(data, 0) returns 3 (since 3 < 8)
-      run is 2, 5, 8
-    getAscendingRun(data, 3) returns 6 (since 8 < 9)
-      run is 3, 9, 9
-    getAscendingRun(data, 6) returns 7 (since 8 is the last item in the list)
-      run is 8
-
-  */
-
-  def getAscendingRun(a: Array[Int], position : Int) : Int = {
+  def getAscendingRun(a: Array[Int], position: Int): Int = {
     require(position < a.length)
+    /*
+     * Returns the position of the first value found in a that is not
+     * the same or increasing. For example:
+     * 
+     * getAscendingRun(Array(1, 2, 3, 1, 2, 3, 2, 3), 0) returns 3
+     * getAscendingRun(Array(1, 2, 3, 1, 2, 3, 2, 3), 3) returns 6
+     * getAscendingRun(Array(1, 2, 3, 1, 2, 3, 2, 3), 6) returns 8
+     */
 
-    -1  // replace with your code, which should return Int
+    // replace with your code, which should return Int
+    -1
   }
 
+ 
+  def getRunsAsString(a: Array[Int]): String = {
+    /*
+     * Returns a string that shows the runs. The integers are separated by "," and each
+     * run is separated by "|".
+     * 
+     * getRunsAsString(Array(1, 2, 3, 1, 2, 3, 2, 3) returns
+     *   "1, 2, 3 | 1, 2, 3 | 2, 3"
+     * getRunsAsString(Array(1, 2, 2, 3, 1, 2, 1, 2, 3, 1) returns
+     *   "1, 2, 2, 3 | 1, 2 | 1, 2, 3 | 1"
+     */
 
-  /*
-    This should use teh getAscendingRun() function to produce a string
-    of runs. The runs should be separated by commas with a vertical bar
-    between each run. In the above:
-
-    2, 5, 8 | 3, 9, 9 | 8
-  */
-
-  def getRunsAsString(a: Array[Int]) : String = {
-    ""
+    // replace with your code
+    "" 
   }
-  // end PrintRuns chunk   
 }
