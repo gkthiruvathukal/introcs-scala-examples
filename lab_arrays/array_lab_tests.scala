@@ -1,7 +1,7 @@
 
 import org.scalatest._
 import arraylab._
-import scala.util.{Try, Success, Failure}
+import scala.util.{ Try, Success, Failure }
 
 class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
 
@@ -12,22 +12,22 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
 
   it should "handle non-empty array" in {
     val result = getIntsAsString("label2: ", ":", Array[Int](1, 2, 3))
-    result should be ("label1: 1:2:3")
+    result should be ("label2: 1:2:3")
   }
 
   it should "handle different labels" in {
     val result = getIntsAsString("label2: ", ":", Array[Int](1, 2, 3))
-    result should be ("label1: 1:2:3")    
+    result should be ("label2: 1:2:3")
   }
 
   "minimum()" should "not work for 0-length array" in {
     intercept[IllegalArgumentException] {
-      val minValue = minimum( Array[Int]())
+      val minValue = minimum(Array[Int]())
     }
   }
 
   it should "work for a >0-length array" in {
-    val minValue = minimum( Array(5, 10, 2, 4, 8, 6, -1, -3))
+    val minValue = minimum(Array(5, 10, 2, 4, 8, 6, -1, -3))
     minValue should be (-3)
   }
 
@@ -69,18 +69,18 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
   }
 
   "pairwiseAdd()" should "add corresponding elements of arrays" in {
-     val a = Array(1, 2, 4, 6, 8, 10)
-     val b = Array(1, 2, 4, 6, 8, 10, 13)
-     val result = Array.fill(5)(0)
-     pairwiseAdd(a, b, result)
-     result should be (Array(2, 4, 8, 12, 16))
+    val a = Array(1, 2, 4, 6, 8, 10)
+    val b = Array(1, 2, 4, 6, 8, 10, 13)
+    val result = Array.fill(6)(0)
+    pairwiseAdd(a, b, result)
+    result should be (Array(2, 4, 8, 12, 16, 20))
   }
 
   "newPairwiseAdd()" should "add corresponding elements of arrays" in {
-     val a = Array(1, 2, 4, 6, 8, 10, 13, 15)
-     val b = Array(1, 2, 4, 6, 8, 10, 13)
-     val result = newPairwiseAdd(a, b)
-     result should be (Array(2, 4, 8, 12, 16, 20, 26))
+    val a = Array(1, 2, 4, 6, 8, 10, 13, 15)
+    val b = Array(1, 2, 4, 6, 8, 10, 13)
+    val result = newPairwiseAdd(a, b)
+    result should be (Array(2, 4, 8, 12, 16, 20, 26))
   }
 
   "isAscending()" should "work with this data" in {
@@ -109,9 +109,7 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
     getAscendingRun(a, 0) should be (3)
     getAscendingRun(a, 3) should be (6)
     getAscendingRun(a, 6) should be (7)
-    getAscendingRun(a, 7) should be (9)
-    getAscendingRun(a, 9) should be (11)
-    getAscendingRun(a, 11) should be (13)
+    getAscendingRun(a, 7) should be (15)
   }
 
   "getRunsAsString()" should "work with the provided example" in {
@@ -121,8 +119,7 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
 
   it should "also work with different data" in {
     val a = Array(2, 5, 8, 3, 9, 9, 8, 3, 3, 4, 4, 5, 5, 6, 6)
-    getRunsAsString(a) should be ("2, 5, 8 | 3, 9, 9 | 8 | 3, 3 | 4, 4 | 5, 5 | 6, 6 |")
+    getRunsAsString(a) should be ("2, 5, 8 | 3, 9, 9 | 8 | 3, 3, 4, 4, 5, 5, 6, 6")
   }
 }
 
- 
