@@ -60,11 +60,15 @@ package object bioinformatics {
       else {
         val nextNode = candidateNodes(0)
         sparseMatrix(node)(nextNode) -= 1
-        println("visiting " + nextNode)
+        print("visiting " + nextNode)
+        println(s" ... bumping adjacency matrix ($node,$nextNode) visited count " + sparseMatrix(node)(nextNode))
         node = nextNode
       }
     }
-    path foreach println
+    sparseMatrix foreach println
+    for (i <- 0 until path.length) {
+      println(" " * i + path(i))
+    }
   }
 
   def main(args: Array[String]) {
@@ -82,9 +86,10 @@ package object bioinformatics {
     adjacencyList foreach println
 
     val sparseMatrix = getSparseMatrix(adjacencyList)
-    println(sparseMatrix)
+    sparseMatrix foreach println
     println("Running Euler")
     euler(adjacencyList, prefix(kmers(0)))
+    println(dna)
   }
 }
 
