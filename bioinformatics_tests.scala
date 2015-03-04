@@ -42,11 +42,20 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
     prefix("AT") should be ("A")
   }
 
-  "k-mers with suffix" should "not contain k-mer being compared" in {
-    val f = fixture
-    val kmers = composition(f.seq, f.len)
-    val notFoundResults = 0 until kmers.length map { i => kmersWithPrefix(kmers, i).contains(i) } count { _ == false }
-    notFoundResults should be (kmers.length)
+  "deBrujinAdjacency()" should "match Pevzner, p. 147" in {
+  	val f = fixture
+  	val m = deBrujinAdjacency(f.seq, f.len)
+  	m("TA").length should be (1)
+  	m("AA").length should be (1)
+  	m("AT").length should be (3)
+  	m("TG").length should be (3)
+  	m("GC").length should be (1)
+  	m("CC").length should be (1)
+  	m("CA").length should be (1)
+  	m("GG").length should be (2)
+  	m("GA").length should be (1)
+  	// m("TT").length should be (0)
   }
+
 }
  

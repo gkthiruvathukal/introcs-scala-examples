@@ -22,12 +22,13 @@ object bioinformatics {
       s.substring(1)
    }
 
-   def kmersWithPrefix( kmers : IndexedSeq[String], index : Int) = {
-      (0 until kmers.length) filter { i => i != index && suffix(kmers(i)) == prefix(kmers(i)) }
+
+   def deBrujinAdjacency(seq : String, kmerLength : Int) = {
+      composition(seq, kmerLength).groupBy(prefix) 	
    }
 
    def main(args : Array[String]) {
-      val DNA = "TATGGGGTGC"
+      val DNA = "TAATGCCATGGGATGTT"
       val KMER_LENGTH = 3
       val dna = Try(args(0)).getOrElse(DNA)
       val kmerLength = Try(args(1).toInt).getOrElse(KMER_LENGTH)
@@ -35,6 +36,9 @@ object bioinformatics {
       val kmersInLexOrder = kmers.sorted
       println(s"kmers: " + kmers.mkString(" "))
       println(s"kmers (sorted lexicographically): " +  kmersInLexOrder.mkString(" "))
+      println("de Brujin Adjacency list")
+      val adjacencyList = deBrujinAdjacency(dna, kmerLength)
+      adjacencyList foreach println
    }
 }
 
