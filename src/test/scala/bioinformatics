@@ -1,8 +1,6 @@
-
 import org.scalatest._
-import bioinformatics._
-import scala.util.{Try, Success, Failure}
 
+import bioinformatics._
 
 class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
 

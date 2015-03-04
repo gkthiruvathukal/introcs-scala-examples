@@ -6,14 +6,7 @@
 // This and the script may change at any time in the future,
 // so please do not depend on the contents you see here.
 
-name := "biology"
-
-// This allows us to keep the source code and tests in the base directory instead
-// of the usual src/{main,test}/scala folder structure. Makes it easier for CS1
-// students!
-
-scalaSource in Compile := baseDirectory.value
-scalaSource in Test := baseDirectory.value
+name := "bioinformatics"
 
 scalaVersion := "2.11.5"
 
@@ -21,6 +14,7 @@ scalaVersion := "2.11.5"
 // Thanks to Konstantin for the Bintray integration!
 
 resolvers += "loyolachicagocode@bintray" at "http://dl.bintray.com/loyolachicagocode/maven"
+
 libraryDependencies += "edu.luc.cs" %% "introcs-scala-ui" % "0.1.11"
 
 // JUnit Support
