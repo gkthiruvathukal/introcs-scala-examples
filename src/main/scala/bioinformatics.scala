@@ -10,10 +10,6 @@ package object bioinformatics {
     0 to seq.length - kmerLength map { index => seq.substring(index, index + kmerLength) }
   }
 
-  // Try running this program as follows:
-  // usage: sbt "run-main kmers DNA-Sequence Length"
-  // sbt "run-main kmers TATGGGGTGC 3"
-
   def prefix(s: String): String = {
     require (s.length > 0)
     s.substring(0, s.length - 1)
@@ -29,18 +25,18 @@ package object bioinformatics {
   }
 
   def getSparseMatrix(graph : Map[String, IndexedSeq[String]]) : HashMap[String, HashMap[String, Int]] = {
-    val hashMap = new HashMap[String, HashMap[String, Int]]()
+    val rows = new HashMap[String, HashMap[String, Int]]()
     for (k <- graph.keys) {
-      hashMap(k) = hashMap.getOrElse(k, new HashMap[String, Int]())
+      rows(k) = rows.getOrElse(k, new HashMap[String, Int]())
       for (kmer <- graph(k)) {
-        val entryMap = hashMap(k)
+        val columns = rows(k)
         val nextNode = suffix(kmer)
-        entryMap(nextNode) = entryMap.getOrElse(nextNode, 0) + 1
-        // make sure all columns of the matrix also appear as rows!
-        hashMap(nextNode) = hashMap.getOrElse(nextNode, new HashMap[String, Int]())
+        columns(nextNode) = columns.getOrElse(nextNode, 0) + 1
+        // make sure all columns of the matrix also appear as rows
+        rows(nextNode) = rows.getOrElse(nextNode, new HashMap[String, Int]())
       }
     }
-    hashMap
+    rows
   }
 
   def euler( graph : Map[String, IndexedSeq[String]], initialNode : String): List[String] = {
