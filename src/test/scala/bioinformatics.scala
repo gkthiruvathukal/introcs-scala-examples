@@ -40,7 +40,7 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
     prefix("AT") should be ("A")
   }
 
-  "deBrujinAdjacency()" should "match Pevzner, p. 147" in {
+  "Compeau and Pevzner (p146)" should "have correct adjacency list" in {
     val f = fixture
     val m = deBrujinAdjacency(f.seq, f.len)
     m("TA").length should be (1)
@@ -52,8 +52,25 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
     m("CA").length should be (1)
     m("GG").length should be (2)
     m("GA").length should be (1)
+    m("GT").length should be (1)
     // m("TT").length should be (0)
   }
 
+  it should "have correct corresponding matrix representation" in {
+    val f = fixture
+    val a = deBrujinAdjacency(f.seq, f.len)
+    val m = getAdjacencyMatrix(a)
+    m("TA")("AA") should be (1)
+    m("AA")("AT") should be (1)
+    m("AT")("TG") should be (3)
+    m("TG")("GC") should be (1)
+    m("GC")("CC") should be (1)
+    m("CC")("CA") should be (1)
+    m("CA")("AT") should be (1)
+    m("GG")("GG") should be (1)
+    m("GG")("GA") should be (1)
+    m("GA")("AT") should be (1)
+    m("GT")("TT") should be (1)
+  }
 }
 
