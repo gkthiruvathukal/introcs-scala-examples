@@ -49,7 +49,7 @@ package object bioinformatics {
     }
   }
 
-  def euler(graph: Map[String, IndexedSeq[String]], initialNode: String): List[String] = {
+  def walkPath(graph: Map[String, IndexedSeq[String]], initialNode: String): List[String] = {
     var node = initialNode
     val path = MutableList[String]()
     val sparseMatrix = getAdjacencyMatrix(graph)
@@ -91,8 +91,8 @@ package object bioinformatics {
 
     val adjacencyMatrix = getAdjacencyMatrix(adjacencyList)
     printMatrix(adjacencyMatrix)
-    println("Euler path calculation (possibly not correct yet)")
-    val path = euler(adjacencyList, prefix(kmers(0)))
+    println("walk path")
+    val path = walkPath(adjacencyList, prefix(kmers(0)))
     for (i <- 0 until path.length) {
       println(" " * i + path(i))
     }
