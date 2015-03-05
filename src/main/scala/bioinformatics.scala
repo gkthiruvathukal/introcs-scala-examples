@@ -43,32 +43,29 @@ package object bioinformatics {
     hashMap
   }
 
-  def euler( graph : Map[String, IndexedSeq[String]], initialNode : String): Unit = {
+  def euler( graph : Map[String, IndexedSeq[String]], initialNode : String): List[String] = {
     var node = initialNode
     val path = MutableList[String]()
     val sparseMatrix = getSparseMatrix(graph)
     var done : Boolean = false
-    println(s"start node = $node")
+    //println(s"start node = $node")
     while (!done) {
       path += node
       val innerMap = sparseMatrix(node)
-      val candidates = innerMap.filter(p => p._2 > 0)
+      val candidates = innerMap.filter { case (seq, count) => count > 0 }
 
-      val candidateNodes = candidates.keys.toArray
-      if (candidateNodes.length == 0)
+      val candidateNodes = candidates.keys
+      if (candidateNodes.size == 0)
         done = true
       else {
-        val nextNode = candidateNodes(0)
+        val nextNode = candidateNodes.head
         sparseMatrix(node)(nextNode) -= 1
-        print("visiting " + nextNode)
-        println(s" ... bumping adjacency matrix ($node,$nextNode) visited count " + sparseMatrix(node)(nextNode))
+        //print("visiting " + nextNode)
+        //println(s" ... bumping adjacency matrix ($node,$nextNode) visited count " + sparseMatrix(node)(nextNode))
         node = nextNode
       }
     }
-    sparseMatrix foreach println
-    for (i <- 0 until path.length) {
-      println(" " * i + path(i))
-    }
+    path.toList
   }
 
   def main(args: Array[String]) {
@@ -79,16 +76,18 @@ package object bioinformatics {
     val kmers = composition(dna, kmerLength)
     val kmersInLexOrder = kmers.sorted
     println(s"dna: $dna")
+    println(s"length: $kmerLength")
     println("kmers: " + kmers.mkString(" "))
-    println("kmers (sorted lexicographically): " + kmersInLexOrder.mkString(" "))
-    println("de Brujin Adjacency list")
+    println("kmers (sorted): " + kmersInLexOrder.mkString(" "))
+    println("adjacency list")
     val adjacencyList = deBrujinAdjacency(dna, kmerLength)
-    adjacencyList foreach println
+    adjacencyList map { case (k, v) => k + ": " + v.toList.mkString(", ") } foreach println
 
-    val sparseMatrix = getSparseMatrix(adjacencyList)
-    sparseMatrix foreach println
-    println("Running Euler")
-    euler(adjacencyList, prefix(kmers(0)))
+    println("Euler path calculation (possibly not correct yet)")
+    val path = euler(adjacencyList, prefix(kmers(0)))
+    for (i <- 0 until path.length) {
+    	println(" " * i + path(i))
+    }
     println(dna)
   }
 }
