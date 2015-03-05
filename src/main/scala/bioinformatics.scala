@@ -1,10 +1,10 @@
 import scala.collection.mutable
 import scala.util.Try
-import scala.collection.mutable.{HashMap, MutableList}
+import scala.collection.mutable.{ HashMap, MutableList }
 
 package object bioinformatics {
 
-  def composition(seq: String, kmerLength: Int)  : IndexedSeq[String] = {
+  def composition(seq: String, kmerLength: Int): IndexedSeq[String] = {
     require (kmerLength > 0)
     require (seq.length > kmerLength)
     0 to seq.length - kmerLength map { index => seq.substring(index, index + kmerLength) }
@@ -20,11 +20,11 @@ package object bioinformatics {
     s.substring(1)
   }
 
-  def deBrujinAdjacency(seq: String, kmerLength: Int) : Map[String, IndexedSeq[String]] = {
+  def deBrujinAdjacency(seq: String, kmerLength: Int): Map[String, IndexedSeq[String]] = {
     composition(seq, kmerLength).groupBy(prefix)
   }
 
-  def getSparseMatrix(graph : Map[String, IndexedSeq[String]]) : HashMap[String, HashMap[String, Int]] = {
+  def getAdjacencyMatrix(graph: Map[String, IndexedSeq[String]]): HashMap[String, HashMap[String, Int]] = {
     val rows = new HashMap[String, HashMap[String, Int]]()
     for (k <- graph.keys) {
       rows(k) = rows.getOrElse(k, new HashMap[String, Int]())
@@ -39,11 +39,21 @@ package object bioinformatics {
     rows
   }
 
-  def euler( graph : Map[String, IndexedSeq[String]], initialNode : String): List[String] = {
+  def printMatrix(matrix: HashMap[String, HashMap[String, Int]]) = {
+    for (row <- matrix.keys) {
+      print(s"$row:")
+      for (column <- matrix(row).keys) {
+        print(s" $column/${matrix(row)(column)}")
+      }
+      println()
+    }
+  }
+
+  def euler(graph: Map[String, IndexedSeq[String]], initialNode: String): List[String] = {
     var node = initialNode
     val path = MutableList[String]()
-    val sparseMatrix = getSparseMatrix(graph)
-    var done : Boolean = false
+    val sparseMatrix = getAdjacencyMatrix(graph)
+    var done: Boolean = false
     //println(s"start node = $node")
     while (!done) {
       path += node
@@ -79,10 +89,12 @@ package object bioinformatics {
     val adjacencyList = deBrujinAdjacency(dna, kmerLength)
     adjacencyList map { case (k, v) => k + ": " + v.toList.mkString(", ") } foreach println
 
+    val adjacencyMatrix = getAdjacencyMatrix(adjacencyList)
+    printMatrix(adjacencyMatrix)
     println("Euler path calculation (possibly not correct yet)")
     val path = euler(adjacencyList, prefix(kmers(0)))
     for (i <- 0 until path.length) {
-    	println(" " * i + path(i))
+      println(" " * i + path(i))
     }
     println(dna)
   }

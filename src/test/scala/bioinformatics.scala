@@ -7,8 +7,8 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
   def fixture = new {
     val seq = "TAATGCCATGGGATGTT"
     val len = 3
-    val expected = Vector("TAA", "AAT", "ATG", "TGC", "GCC", "CCA", 
-      "CAT", "ATG", "TGG", "GGG", "GGA", "GAT", "ATG", "TGT", "GTT")    
+    val expected = Vector("TAA", "AAT", "ATG", "TGC", "GCC", "CCA",
+      "CAT", "ATG", "TGG", "GGG", "GGA", "GAT", "ATG", "TGT", "GTT")
   }
 
   "k-mer composition" should "handle Pevzner page 137" in {
@@ -41,19 +41,19 @@ class RationalScalaTestFlatSpecMatchers extends FlatSpec with Matchers {
   }
 
   "deBrujinAdjacency()" should "match Pevzner, p. 147" in {
-  	val f = fixture
-  	val m = deBrujinAdjacency(f.seq, f.len)
-  	m("TA").length should be (1)
-  	m("AA").length should be (1)
-  	m("AT").length should be (3)
-  	m("TG").length should be (3)
-  	m("GC").length should be (1)
-  	m("CC").length should be (1)
-  	m("CA").length should be (1)
-  	m("GG").length should be (2)
-  	m("GA").length should be (1)
-  	// m("TT").length should be (0)
+    val f = fixture
+    val m = deBrujinAdjacency(f.seq, f.len)
+    m("TA").length should be (1)
+    m("AA").length should be (1)
+    m("AT").length should be (3)
+    m("TG").length should be (3)
+    m("GC").length should be (1)
+    m("CC").length should be (1)
+    m("CA").length should be (1)
+    m("GG").length should be (2)
+    m("GA").length should be (1)
+    // m("TT").length should be (0)
   }
 
 }
- 
+
