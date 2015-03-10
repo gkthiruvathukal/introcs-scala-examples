@@ -12,7 +12,7 @@ object SumFile {
   def CalcSum(filename: String): Int = {
     var sum = 0
     for (file <- Try(Source.fromFile(filename)).toOption) {
-      println("Reading $filename")
+      println(s"Reading $filename")
       for (line <- file.getLines) {
         val amountOpt = Try(line.toInt)
         val amount = amountOpt.getOrElse(0)

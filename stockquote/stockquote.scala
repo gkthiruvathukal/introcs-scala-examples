@@ -50,8 +50,8 @@ object StockQuote {
   def main(args: Array[String]) {
     val SYMBOL = "GOOG"
     val symbol = Try(args(0)).getOrElse(SYMBOL)
-    val startDate = Try(args(0)).getOrElse("2015-01-01")
-    val endDate = Try(args(1)).getOrElse("2015-02-05")
+    val startDate = Try(args(1)).getOrElse("2015-01-01")
+    val endDate = Try(args(2)).getOrElse("2015-02-05")
 
     val starting = matchDateForYahoo(startDate, "a", "b", "c")
     val ending = matchDateForYahoo(endDate, "d", "e", "f")
