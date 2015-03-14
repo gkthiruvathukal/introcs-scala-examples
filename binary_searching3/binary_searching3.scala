@@ -1,5 +1,17 @@
 import scala.util.Random.nextInt
 
+/*
+ * Side-effect-free version of Binary Searching.
+ *
+ * This shows the use of Scala's Iterator.iterator() to reach a fixed point (SearchState). 
+ * dropWhile() is used to drop state until either min >= max. As in the two previous imperative
+ * versions, this condition means that the value was either found or not found, which can be 
+ * determined by examining the SearchState.foundAt property.
+ *
+ * Big acknowledgment to @klaeufer (on GitHub) for helping to identify Iterator.iterator().
+ */
+
+
 case class SearchState( data : Array[Int], item : Int, min : Int, max : Int, foundAt : Int)
 
 object BinarySearching3 {
