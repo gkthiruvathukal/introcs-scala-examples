@@ -11,30 +11,29 @@ import scala.util.Random.nextInt
  * Big acknowledgment to @klaeufer (on GitHub) for helping to identify Iterator.iterator().
  */
 
-
-case class SearchState( data : Array[Int], item : Int, min : Int, max : Int, foundAt : Int)
+case class SearchState(data: Array[Int], item: Int, min: Int, max: Int, foundAt: Int)
 
 object BinarySearching3 {
 
-  def nextState(data: Array[Int], min : Int, max : Int, item : Int) : SearchState = {
-     val mid = (min + max) / 2
-     if (min > max)
-        SearchState(data, item, min, max, -1)
-     else if (item == data(mid)) 
-        SearchState(data, item, mid, mid, mid)
-     else if (item > data(mid))
-        SearchState(data, item, mid+1, max, -1)
-     else
-        SearchState(data, item, min, mid, -1)
+  def nextState(data: Array[Int], min: Int, max: Int, item: Int): SearchState = {
+    val mid = (min + max) / 2
+    if (min > max)
+      SearchState(data, item, min, max, -1)
+    else if (item == data(mid))
+      SearchState(data, item, mid, mid, mid)
+    else if (item > data(mid))
+      SearchState(data, item, mid + 1, max, -1)
+    else
+      SearchState(data, item, min, mid, -1)
   }
 
-  def gotoNextState(state : SearchState ) = nextState(state.data, state.min, state.max, state.item)
+  def gotoNextState(state: SearchState) = nextState(state.data, state.min, state.max, state.item)
 
-  def intArrayBinarySearch(data: Array[Int], item: Int) : Int = {
-  	val fixedPoint = SearchState( data, item, 0, data.length, -1)
-  	val results = Iterator.iterate(fixedPoint)(gotoNextState) dropWhile( state => state.min < state.max)
-  	val finalState = results.next
-  	finalState.foundAt
+  def intArrayBinarySearch(data: Array[Int], item: Int): Int = {
+    val fixedPoint = SearchState(data, item, 0, data.length, -1)
+    val results = Iterator.iterate(fixedPoint)(gotoNextState) dropWhile (state => state.min < state.max)
+    val finalState = results.next
+    finalState.foundAt
   }
 
   def main(args: Array[String]) {
