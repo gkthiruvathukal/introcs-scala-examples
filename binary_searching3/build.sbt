@@ -6,7 +6,7 @@
 // This and the script may change at any time in the future,
 // so please do not depend on the contents you see here.
 
-name := "binary_searching2"
+name := "binary_searching3"
 
 // This allows us to keep the source code and tests in the base directory instead
 // of the usual src/{main,test}/scala folder structure. Makes it easier for CS1
