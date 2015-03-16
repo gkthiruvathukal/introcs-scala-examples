@@ -31,8 +31,8 @@ object gcd2 {
    */
 
   def euclid(x : Int, y : Int): Int = {
-    val fixedPoint = EuclidState(1, x, y)
-    val results = Iterator.iterate(fixedPoint)(gotoNextState) dropWhile (state => state.x != 0)
+    val initState = EuclidState(1, x, y)
+    val results = Iterator.iterate(initState)(gotoNextState) dropWhile (state => state.x != 0)
     val finalState = results.next
     finalState.sign * finalState.y
   }
