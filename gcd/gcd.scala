@@ -1,11 +1,12 @@
 import scala.util._
+import math.abs
 
 object gcd {
 
   def euclid(x: Int, y: Int): Int = {
     if (x == 0) y
-    else if (x < 0) euclid(-x, y)
-    else if (y < 0) -euclid(x, -y)
+    else if (x < 0) euclid(abs(x), y)
+    else if (y < 0) euclid(x, abs(y))
     else euclid(y % x, x)
   }
 
