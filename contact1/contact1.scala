@@ -25,7 +25,7 @@ object contact1 {
     contacts foreach println
 
     println("Find contact with a specific phone number")
-    contacts filter { c => c.phone == "773-202-LUNA" } foreach println
+    contacts filter { c => c.phone == "773-508-7890" } foreach println
 
   }
 }
