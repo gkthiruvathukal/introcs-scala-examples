@@ -14,9 +14,9 @@ object point1 {
   }
   
   def main(args : Array[String]) {
-    val p0 = new Point(3, 3)
-    val p1 = new Point(3, 6)    // d(p0, p1) = 3
-    val p2 = new Point(7, 6)    // d(p1, p2) = 4
+    val p0 = Point(3, 3)
+    val p1 = Point(3, 6)    // d(p0, p1) = 3
+    val p2 = Point(7, 6)    // d(p1, p2) = 4
     
     println("d(p0,p1) = " + p0.distanceTo(p1))
     println("d(p1,p2) = " + p1.distanceTo(p2))
