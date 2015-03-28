@@ -16,7 +16,7 @@ object contact1 {
     println(s"Marie's full name = ${c1.name}")
     println(s"Marie's phone number = ${c1.phone}")
     println(s"Marie's e-mail = ${c1.phone}")
-    println(s"Otto's full contact info = ${c1}")
+    println(s"Otto's full contact info = ${c2}")
 
     println("Adding contacts to List[Contact]")
     val contacts = List(c1, c2)
