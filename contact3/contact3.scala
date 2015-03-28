@@ -6,8 +6,8 @@ object contact2 {
   def main(args: Array[String]) {
     println("Creating two Contact objects")
 
-    val c1 = new Contact("Marie Ortiz", "773-508-7890", "mortiz2@luc.edu");
-    val c2 = new Contact("Otto Heinz", "773-508-9999", "oheinz@luc.edu");
+    val c1 = Contact("Marie Ortiz", "773-508-7890", "mortiz2@luc.edu");
+    val c2 = Contact("Otto Heinz", "773-508-9999", "oheinz@luc.edu");
 
     c1 match {
       case Contact(name, phone, email) => {
