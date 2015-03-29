@@ -6,7 +6,7 @@ object point2 {
   // constructing the instance (when you can live with val).
   // Note how this allows for a much nicer implementation of distanceTo()
 
-  case class Point(x : Int, y : Int) {
+  case class Point(x : Double, y : Double) {
     def distanceTo(p : Point) : Double = {
       val sqr = (x : Double) => math.pow(x, 2)
       p match {
