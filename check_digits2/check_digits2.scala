@@ -17,7 +17,6 @@ object check_digits2 {
     var allDigitsSoFar = true
     breakable {
       for (i <- 0 until s.length) {
-        println("checking " + s(i))
         if (s(i) < '0' || s(i) > '9') {
           allDigitsSoFar = false
           break()
