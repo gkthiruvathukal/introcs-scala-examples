@@ -1,7 +1,7 @@
 import edu.luc.cs.ui._
 import math.abs
 
-object g_c_d_subtraction_method {
+object gcdSubtraction {
   def main(args: Array[String]) {
     val a = promptInt("Enter an integer: ", 1)
     val b = promptInt("Enter another integer: ", 1)
@@ -10,21 +10,33 @@ object g_c_d_subtraction_method {
   }
 
   def gcd(x : Int, y : Int) : Int = {
-    var a = math.abs(x)
-    var b = math.abs(y)
-    require (a != 0)
-    require (b != 0)
-    var c = 0
-    while (a != b) {
-      while (a > b) {
-        c =  a - b
-        a = c
+
+    // Subtraction method assumes x > 0 && y > 0
+    def gcdSubtractionMethod(x : Int, y : Int) : Int =  {
+      var a = x
+      var b = y
+      var c = 0
+      while (a != b) {
+       while (a > b) {
+         c =  a - b
+         a = c
+       }
+       while (b > a) {
+         c = b - a
+         b = c
+       }
       }
-      while (b > a) {
-        c = b - a
-        b = c
-      }
+      a
     }
-    a
+
+    // Only call the subtraction method for non-zero x and y
+    // It doesn't work otherwise. Inputs are taken at absolute value.
+
+    if (x == 0)
+      y
+    else if (y == 0)
+      x
+    else 
+      gcdSubtractionMethod( abs(x), abs(y) )
   }
 }
