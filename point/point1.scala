@@ -13,6 +13,8 @@ object point1 {
     
     def translate(dx : Double, dy : Double) = new Point(x + dx, y + dy) 
 
+    def translate(p : Point) = new Point(x + p.x, y + p.y) 
+
     override def toString() = s"Point($x, $y)"
   }
   
@@ -33,9 +35,9 @@ object point1 {
     println(q1)
     println(q2)
 
-    println("d(p0,p1) = " + p0.distanceTo(p1))
-    println("d(p1,p2) = " + p1.distanceTo(p2))
-    println("d(p0,p2) = " + p0.distanceTo(p2))
+    println("d(q0,q1) = " + q0.distanceTo(q1))
+    println("d(q1,q2) = " + q1.distanceTo(q2))
+    println("d(q0,q2) = " + q0.distanceTo(q2))
   }
 }
   
